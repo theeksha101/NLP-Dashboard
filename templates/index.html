@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %} 
+
+{% block body %}
+
+<form method="post">
+
+    <div class="container">
+
+    <div class="header">
+        <h1 class="heading" style="text-align: center">Sentiment Analyzer</h1>
+    </div>
+
+    <div class="content-large">
+        <textarea class="text-box" type="text" id="data" name="data" placeholder="Enter some text here..."></textarea>
+        <input type="submit" id="accept-data" name="accept-data" value="Analyze" class="add-task-button">
+    </div>
+
+    <div class="content-large" method="post">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Ooopss!!!</strong> Looks like you haven't entered any text. Please enter some text.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+
+        {% for result in results %}
+            <h4 style="text-align: center"> {{result}} </h4>
+        {% endfor %}
+
+        {% if score_dict|length > 0 %}
+            {% if score_dict['compound'] >= 0.5 %}
+                <h4 class="pos">Your Overall Text Was Positive </h4>
+            {% elif score_dict['compound'] <= -0.5 %}
+                <h4 class="neg">Your Overall Text Was Negative </h4>
+            {% else %}
+                <h4 class="neu">Your Overall Text Was Neutral </h4>
+            {% endif%}
+        {% endif %}
+
+    </div>
+
+    <div class="footer" style="text-align: center">
+
+    </div>
+       
+</form>
+
+</div>
+{% endblock %}
+

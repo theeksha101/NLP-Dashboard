@@ -1,0 +1,92 @@
+body, html {
+    margin: 0;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color: rgb(243, 240, 247);
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 50px;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.container div{
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+.content-large{
+    border-radius: 8px;
+    background-color: rgb(217, 193, 240)
+}
+
+.header{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: rgb(172, 77, 255);
+    border-radius: 8px;
+}
+
+
+.footer{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-radius: 8px;
+    background-color: rgb(217, 193, 240)
+}
+
+.add-task-button{
+    background-color: rgb(139, 17, 245);
+    border-color: rgb(96, 95, 95);
+    color: rgb(6, 6, 6);
+    border-width: 2px;
+    height: 40px;
+    width: 300px;
+    font-size: 15px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-left: 200px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 1s, box-shadow 0.15s;
+    transition: background-color 1s;
+}
+
+.add-task-button:hover{
+    opacity: 0.9;   
+}
+
+.add-task-button:active{
+    opacity: 0.6;
+}
+
+.text-box{
+    width: 600px;
+    height: 250px;
+    border-radius: 8px;
+    padding: 5px;
+    margin-left: 50px;
+    
+}
+
+.pos{
+    color: green;
+    text-align: center;
+}
+
+.neg{
+    color: red;
+    text-align: center;
+}
+
+.neu{
+    color: yellow;
+    text-align: center;
+}
