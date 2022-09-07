@@ -15,7 +15,14 @@ def index():
             flash("Please enter some text first")
         else:
             results, score_dict = sentiment_scores(text)
-    return render_template('index.html', results=results, score_dict=score_dict)
+    
+    labels = [key for key in score_dict]
+    values = [score_dict[key] for key in score_dict]
+    if labels:
+        labels.pop()
+        values.pop()
+    return render_template('index.html', results=results, score_dict=score_dict,
+                labels=labels, values=values)
 
 
 def sentiment_scores(data):
