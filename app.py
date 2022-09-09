@@ -30,9 +30,9 @@ def sentiment_scores(data):
     sentiment_dict = sid_obj.polarity_scores(data)
     list1 = []
     list1.append("Your text is, ")
-    list1.append("{} % Negative".format(sentiment_dict['neg']*100))
-    list1.append("{} % Neutral".format(sentiment_dict['neu']*100))
-    list1.append("{} % Positive".format(sentiment_dict['pos']*100))
+    list1.append("{:.3f} % Negative".format(sentiment_dict['neg']*100))
+    list1.append("{:.3f} % Neutral".format(sentiment_dict['neu']*100))
+    list1.append("{:.3f} % Positive".format(sentiment_dict['pos']*100))
     return list1, sentiment_dict 
 
 

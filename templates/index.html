@@ -14,6 +14,7 @@
     <div class="content-large">
         <textarea class="text-box" type="text" id="data" name="data" placeholder="Enter some text here..."></textarea>
         <input type="submit" id="accept-data" name="accept-data" value="Analyze" class="add-task-button">
+        <input type="submit" id="accept-file" name="accept-file" value="Browse" class="add-task-button">
     </div>
 
     <div class="content-large" method="post">
@@ -23,7 +24,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
-
+<!-- 
         {% for result in results %}
             <h4 style="text-align: center"> {{result}} </h4>
         {% endfor %}
@@ -36,8 +37,52 @@
             {% else %}
                 <h4 class="neu">Your Overall Text Was Neutral </h4>
             {% endif%}
-        {% endif %}
-
+        {% endif %} -->
+        
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
+                <div class="card" style="width: 16rem; height: 8rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Positive</h5>
+                        <p class="card-text"> {{ results[3] }} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 16rem; height: 8rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Negative</h5>
+                        <p class="card-text">{{ results[1] }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 16rem; height: 8rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Neutral</h5>
+                        <p class="card-text">{{ results[2] }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 16rem; height: 8rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Overall Result</h5>
+                        {% if score_dict|length > 0 %}
+                        {% if score_dict['compound'] >= 0.5 %}
+                            <p class="card-text">Positive</p>
+                        {% elif score_dict['compound'] <= -0.5 %}
+                            <p class="card-text">Negative</p>
+                        {% else %}
+                            <p class="card-text">Neutral</p>
+                        {% endif%}
+                        {% endif %}
+                        <!-- {{ score_dict['compound'] }} -->
+                        
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
@@ -54,7 +99,7 @@
                             label: "Data Points",
                             data: {{ values | safe}},
                             fill: false,
-                            borderColor: "rgb(245, 158, 66)",
+                            borderColor: "rgb(7, 181, 181)",
                             lineTension: 0.5
                         }
                     ]
@@ -79,16 +124,16 @@
                             label: "Data",
                             data: {{ values | safe}},
                             backgroundColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(54, 162, 235)',
-                                'rgb(255, 205, 86)'
+                                'rgb(222, 27, 13)',
+                                'rgb(235, 242, 31)',
+                                'rgb(22, 166, 62)'
                             ],
                             hoverOffset: 4
                         }
                     ]
                 }
             });
-            document.write("{{ values }}")
+            // document.write("{{ values }}")
         </script>
     </div>
 </div>
@@ -96,6 +141,5 @@
        
 </form>
 
-</div>
 {% endblock %}
 
