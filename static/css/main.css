@@ -1,15 +1,15 @@
 body, html {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
-    background-color: rgb(245, 240, 251);
+    /* background-color: rgb(114, 116, 237); */
 }
 
 .container{
     width: 250vw;
-    height: 150vh;
+    height: 200vh;
     display: grid;
     grid-template-columns: 1fr 1fr ;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr 1fr;
     gap: 20px;
     padding: 10px;
     box-sizing: border-box;
@@ -22,7 +22,7 @@ body, html {
 
 .content-large{
     border-radius: 8px;
-    background-color: rgb(239, 241, 255);
+    background-color: rgb(156, 166, 242);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -37,6 +37,14 @@ body, html {
 
 .footer{
     border-radius: 8px;
+    background-color: rgb(156, 166, 242);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.nlpd{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-radius: 8px;
     background-color: rgb(239, 241, 255);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
@@ -45,7 +53,7 @@ body, html {
     background-color: rgb(233, 207, 255);
     border-color: rgb(249, 245, 245);
     color: rgb(15, 14, 14);
-    border-width: 1px;
+    border-width: 0px;
     height: 40px;
     width: 200px;
     font-size: 16px;
@@ -98,3 +106,9 @@ body, html {
 .card{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
+.card:hover {
+    /* color: rgba(255, 255, 255, 1); */
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    border-color: rgba(145, 92, 182, .5) ;
+  }

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import nltk
+from nltk.tokenize import RegexpTokenizer
+from fastapi import FastAPI
 nltk.download('vader_lexicon')
 
 app = Flask(__name__)
@@ -9,6 +11,7 @@ app.secret_key = "super secret key"
 def index():
     results = []
     score_dict = {}
+    text = ""
     if request.method == 'POST':    
         text = request.form['data']
         if text == "":
@@ -18,11 +21,13 @@ def index():
     
     labels = [key for key in score_dict]
     values = [score_dict[key] for key in score_dict]
+    tokenizer = RegexpTokenizer(r'\w+')
+    tokens = tokenizer.tokenize(text)
     if labels:
         labels.pop()
         values.pop()
     return render_template('index.html', results=results, score_dict=score_dict,
-                labels=labels, values=values)
+                labels=labels, values=values, tokens=tokens)
 
 
 def sentiment_scores(data):

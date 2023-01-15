@@ -24,26 +24,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
-<!-- 
-        {% for result in results %}
-            <h4 style="text-align: center"> {{result}} </h4>
-        {% endfor %}
 
-        {% if score_dict|length > 0 %}
-            {% if score_dict['compound'] >= 0.5 %}
-                <h4 class="pos">Your Overall Text Was Positive </h4>
-            {% elif score_dict['compound'] <= -0.5 %}
-                <h4 class="neg">Your Overall Text Was Negative </h4>
-            {% else %}
-                <h4 class="neu">Your Overall Text Was Neutral </h4>
-            {% endif%}
-        {% endif %} -->
-        
         <div class="row row-cols-1 row-cols-md-2">
             <div class="col">
                 <div class="card" style="width: 16rem; height: 8rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Positive</h5>
+                        <h5 class="card-title">Positive Score</h5>
                         <p class="card-text"> {{ results[3] }} </p>
                     </div>
                 </div>
@@ -51,7 +37,7 @@
             <div class="col">
                 <div class="card" style="width: 16rem; height: 8rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Negative</h5>
+                        <h5 class="card-title">Negative Score</h5>
                         <p class="card-text">{{ results[1] }}</p>
                     </div>
                 </div>
@@ -59,7 +45,7 @@
             <div class="col">
                 <div class="card" style="width: 16rem; height: 8rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Neutral</h5>
+                        <h5 class="card-title">Neutral Score</h5>
                         <p class="card-text">{{ results[2] }}</p>
                     </div>
                 </div>
@@ -67,14 +53,14 @@
             <div class="col">
                 <div class="card" style="width: 16rem; height: 8rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Overall Result</h5>
+                        <h5 class="card-title">Overall Score</h5>
                         {% if score_dict|length > 0 %}
                         {% if score_dict['compound'] >= 0.5 %}
-                            <p class="card-text">Positive</p>
+                            <p class="card-text">Positive {{ score_dict['compound'] }} </p>
                         {% elif score_dict['compound'] <= -0.5 %}
-                            <p class="card-text">Negative</p>
+                            <p class="card-text">Negative {{ score_dict['compound'] }} </p>
                         {% else %}
-                            <p class="card-text">Neutral</p>
+                            <p class="card-text">Neutral {{ score_dict['compound'] }} </p>
                         {% endif%}
                         {% endif %}
                         <!-- {{ score_dict['compound'] }} -->
@@ -99,7 +85,7 @@
                             label: "Data Points",
                             data: {{ values | safe}},
                             fill: false,
-                            borderColor: "rgb(7, 181, 181)",
+                            borderColor: "rgb(255, 61, 139)",
                             lineTension: 0.5
                         }
                     ]
@@ -136,6 +122,7 @@
             // document.write("{{ values }}")
         </script>
     </div>
+
 </div>
 
        
